@@ -1,7 +1,7 @@
 # Run pathfindR
 
 The `run-pathfindR.R` script works in [pathfindR](https://github.com/egeulgen/pathfindR) v2.4.2 and implements the most common pathfindR workflow using these four input files:
-1. DEA results: path to the input file with the DEA results. It must be a CSV file with at least these four columns: gtf_ensembl_id, gene_name, logFC, and padj.
+1. DEA results: path to the input file with the DEA results. It must be a CSV file with at least these four columns: gtf_gene_id, gene_name, logFC, and padj.
 2. Counts file: path to the CSV file with the counts for the samples (rows are genes and columns are samples; genes are specified as Ensembl IDs).
 3. Metadata file: path to the TSV file with the samples metadata.
 4. Reference file: path to the file with the reference condition (only one line with the condition name).
@@ -14,7 +14,7 @@ The script also takes three additional parameters:
 
 ## Motivation
 
-This script was created in the context of a [Compi pipeline for RNA-Seq data analysis](https://github.com/sing-group/compi-rnaseq-pipeline). In this pipeline, DElite was used for performing DEA and so this is the input CSV file to the script. As the original GTF annotation uses EnsemblIDs, this file was postprocessed to add gene names. These two fields are used to convert the counts file gene EnsemblIDs into gene names before using it in pathfindR. Hopefully this script can be reused for similar purposes!
+This script was created in the context of a [Compi pipeline for RNA-Seq data analysis](https://github.com/sing-group/compi-rnaseq-pipeline). In this pipeline, DElite was used for performing DEA and so this is the input CSV file to the script. This file contains a column with name "gtf_gene_id" and was postprocessed to add gene names. These two fields are used to convert the counts file (that contains the Gene IDs from the GTF file used previously) into gene names before using it in pathfindR. Hopefully this script can be reused for similar purposes!
 
 ## Test
 

@@ -1,6 +1,6 @@
 ## Script input parameters:
 ##  1.- input file: path to the input file with the DEA results. It must be a CSV file with 
-##		at least these four columns: gtf_ensembl_id, gene_name, logFC, and padj
+##		at least these four columns: gtf_gene_id, gene_name, logFC, and padj
 ##  2.- counts file: path to the CSV file with the counts for the samples (rows are genes and
 ##		columns are samples; genes are specified as Ensembl IDs).
 ##  3.- metadata file: path to the TSV file with the samples metadata.
@@ -117,10 +117,10 @@ counts <- read.table(input_counts_file, head= TRUE, sep = "\t")
 # Therefore, first we must assign gene symbols to the rows of the experiment matrix which are currently Ensembl IDs.
 # 
 
-mapping <- tsv[, c('gtf_ensembl_id', 'gene_name')]
+mapping <- tsv[, c('gtf_gene_id', 'gene_name')]
 
 # From counts we only keep those rows that have a gene_name in mapping
-merged <- merge(counts, mapping, by.x = "gene", by.y = "gtf_ensembl_id", all.x = FALSE, all.y = TRUE)
+merged <- merge(counts, mapping, by.x = "gene", by.y = "gtf_gene_id", all.x = FALSE, all.y = TRUE)
 
 # Remove all rows with gene = NA
 merged <- merged[!is.na(merged$gene_name),]
