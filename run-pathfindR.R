@@ -8,7 +8,7 @@
 ##  5.- output directory: path to the directory where results should be stored.
 ##  6.- gene sets: the gene sets to be used for enrichment analysis, one of:
 ##      KEGG, Reactome, BioCarta, GO-All, GO-BP, GO-CC and GO-MF (all for Homo sapiens)
-## 7.- pin: the protein interaction network to be used for enrichment analysis, one of:
+##  7.- pin: the protein interaction network to be used for enrichment analysis, one of:
 ##		Biogrid, STRING, GeneMania, IntAct, KEGG, and mmu_STRING
 
 suppressPackageStartupMessages(library(pathfindR))
