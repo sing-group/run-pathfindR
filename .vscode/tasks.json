@@ -1,0 +1,12 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "copy to pipeline",
+            "type": "shell",
+            "command": "cp run-pathfindR.R /home/hlfernandez/Investigacion/Desarrollos/Git/sing-bioinformatics/compi-rnaseq-pipeline/scripts/run-pathfindR.R"
+        }
+    ]
+}
