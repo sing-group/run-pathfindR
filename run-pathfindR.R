@@ -57,7 +57,18 @@ if (!(pin %in% VALID_PIN_NAMES)) {
 	stop(paste("Invalid PIN name. Provided PIN: ", pin, ". It must be one of: ", paste(VALID_PIN_NAMES, collapse=", "), sep=""))
 }
 
+# Remove duplicated genes from the input file to avoid issues with the enrichment analysis
 tsv <- read.table(file = input_file, sep = ",", header = TRUE)
+if (any(duplicated(tsv$gene_entrezid))) {
+	warning("Duplicated gene IDs found in the input file. Only the first occurrence will be kept.")
+  	tsv <- tsv[!duplicated(tsv$gene_entrezid),]
+
+	if (any(duplicated(tsv$gene_name))) {
+		warning("Duplicated gene names found in the input file. Only the first occurrence will be kept.")
+  		tsv <- tsv[!duplicated(tsv$gene_name),]
+	}
+}
+
 pathfindR_input <- tsv[, c('gene_name', 'logFC', 'padj')]
 
 #
